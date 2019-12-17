@@ -1,24 +1,20 @@
-var db = require("../models");
+var db=require("../models");
 
-module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+module.exports=function(app){
+    app.get("/api/scores", function(req, res){
+        db.Scores.findAll({}).then(function(dbScores){
+            res.json(dbScores);
+        });
     });
-  });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+    app.post("/api/scores", function(req, res){
+        db.Scores.create({
+            name: req.body.name,
+            score: req.body.score,
+            start: req.body.start,
+            end: req.body.end
+        }).then(function(dbScores){
+                res.json(dbScores);
+        });
     });
-  });
-
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
 };
