@@ -41,11 +41,10 @@ var blockBreaking;
 function preload(){
 
     $(window).on("load", function(){
-        $("#nameForm").modal("show")
+        $("#nameForm").modal("show");
     $("#nameSubmit").on("click", function(){
-        event.preventDefault();
-        playerData.name=$("#playerName").text;
-        $("#nameForm").modal("hide");
+        playerData.name=$("#playerName").val().trim();
+        $("#nameForm").hide();
         });
     });
     
