@@ -7,7 +7,8 @@ module.exports=function(app){
 
     app.get("/scores", function(req, res){
         db.Scores.findAll({}).then(function(dbScores){
-            res.render("scores", {scores: dbScores});
+            var scoresArray=res.json(dbScores);
+            res.render("scores", {scores: scoresArray});
         });
     });
 };

@@ -1,9 +1,14 @@
 <div id="scores">
-    <ul>
-        <li style="list-style: none">{{#each scores}}</li>
-        <li>{{this}}</li>
-        <li style="list-style: none">{{/each}}</li>
-    </ul>
+    <table>Scores:
+        {{#each scores}}
+        <tr>
+            <td>{{name}}</td>
+            <td>{{score}}</td>
+            <td>{{start}}</td>
+            <td>{{end}}</td>
+        </tr>
+        {{/each}}
+    </table>
 </div>
 
 <a href="/">Play the game!</a>
